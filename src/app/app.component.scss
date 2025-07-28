@@ -10,7 +10,7 @@
 }
 
 .logo-container {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
   min-height: 56px;
   padding-left: 16px;
   padding-right: 16px;
@@ -24,22 +24,36 @@ mat-toolbar-row {
   height: 56px;
 }
 
-.menu-items{
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    li {
-        padding-left: 16px;
-        padding-right: 16px;
-        height: 48px;
-        display: flex;
-        align-items: center;
-        cursor: pointer;
-        mat-icon {
-            margin-right: 16px;
-        }
-        &:hover{
-            background-color: rgba(0,0,0,0.1);
-        }
+.menu-items {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    padding-left: 16px;
+    padding-right: 16px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+
+    cursor: pointer;
+    a {
+      color: #1a1b1f;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+
+      mat-icon {
+        margin-right: 16px;
+      }
     }
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.04);
+    }
+  }
+}
+
+.router-container {
+  padding-top: 16px;
+  padding-left: 56px;
 }

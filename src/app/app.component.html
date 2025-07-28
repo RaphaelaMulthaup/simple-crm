@@ -1,14 +1,13 @@
-<!-- <router-outlet /> -->
-
 <mat-drawer-container class="mat-drawer-container" autosize>
   <mat-drawer [opened]="true" #drawer class="sidenav" mode="side">
     <div class="logo-container">Platz für Logo</div>
     <ul class="menu-items">
       <li>
-        <mat-icon>dashboard</mat-icon>
-        Dashboard
+        <a href="dashboard"><mat-icon>dashboard</mat-icon>Dashboard</a>
       </li>
-      <li><mat-icon>person</mat-icon>User</li>
+      <li>
+        <a href="user"><mat-icon>person</mat-icon>User</a>
+      </li>
     </ul>
   </mat-drawer>
 
@@ -19,5 +18,6 @@
         <span>Simple CRM</span>
       </mat-toolbar-row>
     </mat-toolbar>
+    <div class="router-container"><router-outlet></router-outlet></div>
   </div>
 </mat-drawer-container>
