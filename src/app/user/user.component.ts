@@ -6,6 +6,17 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { DialogAddUserComponent } from '../dialog-add-user/dialog-add-user.component';
 import { User } from '../../models/user.class';
 import { MatCardModule } from '@angular/material/card';
+import { collection, Firestore, onSnapshot } from '@angular/fire/firestore';
+
+interface UserData {
+  id: string;
+  firstName: string;
+  lastName: string;
+  birthDate: number;
+  street: string;
+  zipCode: number;
+  city: string;
+}
 
 @Component({
   selector: 'app-user',
@@ -20,6 +31,23 @@ import { MatCardModule } from '@angular/material/card';
   styleUrl: './user.component.scss',
 })
 export class UserComponent {
+  firestore: Firestore = inject(Firestore);
+  allUsers: UserData[] = [];
+  ngOnInit() {
+    this.loadUsersLive();
+  }
+
+  loadUsersLive() {
+    const usersCollection = collection(this.firestore, 'users');
+
+    onSnapshot(usersCollection, (snapshot) => {
+      this.allUsers = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...(doc.data() as Omit<UserData, 'id'>),
+      }));
+      console.log('Live-Daten:', this.allUsers);
+    });
+  }
   // user = new User();
   readonly dialog = inject(MatDialog);
   openDialog() {
