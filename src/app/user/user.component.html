@@ -6,7 +6,7 @@
       <th>City</th>
     </tr>
     @for (user of allUsers; track $index) {
-    <tr>
+    <tr (click)="navigateToUser(user.id)">
       <td>{{ user.firstName }} {{ user.lastName }}</td>
       <td>{{ user.email }}</td>
        <!-- <td>noch keine Mail</td> -->

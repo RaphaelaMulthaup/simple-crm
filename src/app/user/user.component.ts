@@ -7,6 +7,7 @@ import { DialogAddUserComponent } from '../dialog-add-user/dialog-add-user.compo
 import { User } from '../../models/user.class';
 import { MatCardModule } from '@angular/material/card';
 import { collection, Firestore, onSnapshot } from '@angular/fire/firestore';
+import { Router } from '@angular/router';
 
 interface UserData {
   id: string;
@@ -32,6 +33,7 @@ interface UserData {
   styleUrl: './user.component.scss',
 })
 export class UserComponent {
+  constructor(private router: Router) {}
   firestore: Firestore = inject(Firestore);
   allUsers: UserData[] = [];
   ngOnInit() {
@@ -53,5 +55,9 @@ export class UserComponent {
   readonly dialog = inject(MatDialog);
   openDialog() {
     this.dialog.open(DialogAddUserComponent);
+  }
+
+  navigateToUser(id: string) {
+    this.router.navigate(['/user', id]);
   }
 }
