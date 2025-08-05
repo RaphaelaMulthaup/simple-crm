@@ -1,13 +1,13 @@
 <mat-card class="user-datail-header">
   <img src="assets/img/portrait-9134409_1280.png" alt="" />
   <div class="user-details">
-    <h2>Max Mustermann</h2>
-    <span>email&#64;email.de</span>
+    <h2>{{user.firstName}} {{user.lastName}}</h2>
+    <span>{{user.email}}</span>
   </div>
 </mat-card>
 <mat-card class="mt-32">
   <mat-card-header>
     <mat-card-title>Address</mat-card-title>
   </mat-card-header>
-  <mat-card-content>Musterstar?e 23 <br />12345 Musterstadt</mat-card-content>
+  <mat-card-content>{{user.street}}<br />{{user.zipCode}} {{user.city}}</mat-card-content>
 </mat-card>
