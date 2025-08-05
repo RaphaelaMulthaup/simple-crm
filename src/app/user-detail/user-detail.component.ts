@@ -49,9 +49,11 @@ export class UserDetailComponent {
     console.log('hier die Daten:', this.user);
   }
 
-  editUserDetail() {    this.dialog.open(DialogEditUserComponent);
-}
+  editUserDetail() {
+    this.dialog.open(DialogEditUserComponent);
+  }
   editAddress() {
-    this.dialog.open(DialogEditAddressComponent);
+    const dialog = this.dialog.open(DialogEditAddressComponent);
+    dialog.componentInstance.user = this.user;
   }
 }
