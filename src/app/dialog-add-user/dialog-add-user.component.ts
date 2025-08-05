@@ -7,7 +7,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
 import { provideNativeDateAdapter } from '@angular/material/core';
-import { User } from '../../models/user.class';
+import { User } from '../models/user.class';
 import { FormsModule } from '@angular/forms';
 import { Firestore } from '@angular/fire/firestore';
 import { collection, addDoc } from '@angular/fire/firestore';

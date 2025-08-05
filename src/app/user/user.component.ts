@@ -4,7 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { DialogAddUserComponent } from '../dialog-add-user/dialog-add-user.component';
-import { User } from '../../models/user.class';
+import { User } from '../models/user.class';
 import { MatCardModule } from '@angular/material/card';
 import { collection, Firestore, onSnapshot } from '@angular/fire/firestore';
 import { Router } from '@angular/router';

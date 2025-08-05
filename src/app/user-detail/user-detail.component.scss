@@ -1,0 +1,27 @@
+.user-datail-header {
+  min-height: 250px;
+  background-color: #92aaaa;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  padding: 24px;
+  img {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+}
+
+.user-details {
+  margin-left: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  height: 100px;
+  h2 {
+    margin-bottom: 0;
+  }
+}
