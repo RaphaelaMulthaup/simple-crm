@@ -13,6 +13,9 @@ import { User } from '../models/user.class';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogEditAddressComponent } from '../dialog-edit-address/dialog-edit-address.component';
+import { DialogEditUserComponent } from '../dialog-edit-user/dialog-edit-user.component';
 
 @Component({
   selector: 'app-user-detail',
@@ -23,6 +26,7 @@ import { MatMenuModule } from '@angular/material/menu';
 export class UserDetailComponent {
   constructor(private route: ActivatedRoute) {}
   firestore: Firestore = inject(Firestore);
+  readonly dialog = inject(MatDialog);
 
   private sub: Subscription = new Subscription();
   userId: string | null = null;
@@ -45,6 +49,9 @@ export class UserDetailComponent {
     console.log('hier die Daten:', this.user);
   }
 
-  editUserDetail() {}
-  editAddress() {}
+  editUserDetail() {    this.dialog.open(DialogEditUserComponent);
+}
+  editAddress() {
+    this.dialog.open(DialogEditAddressComponent);
+  }
 }
