@@ -34,27 +34,40 @@ export class UserDetailComponent {
   ngOnInit(): void {
     this.sub = this.route.paramMap.subscribe((params) => {
       this.userId = params.get('id');
-      console.log('Neue ID:', this.userId);
     });
     if (this.userId) {
-      this.getUser(this.userId);
+      this.listenToUserChanges(this.userId);
     }
   }
 
-  async getUser(userId: string) {
-    const userRef = doc(this.firestore, 'users', userId);
-    const userSnap = await getDoc(userRef);
-    this.user = new User(userSnap.data());
-
-    console.log('hier die Daten:', this.user);
-  }
-
+listenToUserChanges(userId: string) {
+  const userRef = doc(this.firestore, 'users', userId);
+  onSnapshot(userRef, (docSnap) => {
+    if (docSnap.exists()) {
+      this.user = new User(docSnap.data());
+      console.log('Live-Daten:', this.user);
+    } else {
+      console.error('User-Dokument existiert nicht.');
+    }
+  });
+}
   editUserDetail() {
-    const dialog = this.dialog.open(DialogEditUserComponent);
-    dialog.componentInstance.user = new User(this.user.toJson());
+    if (this.userId) {
+      const dialog = this.dialog.open(DialogEditUserComponent);
+      dialog.componentInstance.user = new User(this.user.toJson());
+      dialog.componentInstance.userId = this.userId; // jetzt sicher string
+      // dialog.componentInstance.birthDate = this.
+    } else {
+      console.error('userId ist null – kann Dialog nicht öffnen');
+    }
   }
   editAddress() {
-    const dialog = this.dialog.open(DialogEditAddressComponent);
-    dialog.componentInstance.user = new User(this.user.toJson());
+    if (this.userId) {
+      const dialog = this.dialog.open(DialogEditAddressComponent);
+      dialog.componentInstance.user = new User(this.user.toJson());
+      dialog.componentInstance.userId = this.userId;
+    } else {
+      console.error('userId ist null – kann Dialog nicht öffnen');
+    }
   }
 }
